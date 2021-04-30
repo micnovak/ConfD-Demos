@@ -1,26 +1,25 @@
 @startuml
 
-node gNMIClient [
-gNMI Adapter
-
-....
-
+node gNMIClient <<gNMI Adapter>> [
 client
 ]
 
 
-node gNMIServer [
-gNMI Adapter
-
-....
-
+node gNMIServer <<gNMI Adapter>> [
 server
 ]
+
+skinparam node {
+backgroundColor<<gNMI Adapter>> lightsteelblue
+}
 
 node ConfD {
     database CDB
 }
 
+node DataProvider [
+Data Provider
+]
 
 node Netconf [
 <i>NETCONF</i>
@@ -35,7 +34,10 @@ gNMIClient <-ri-> net1
 net1 <-ri-> gNMIServer
 gNMIServer <-ri-> net2
 gNMIServer <.do.> net3
-net2 <-ri-> ConfD
+DataProvider <~le~> gNMIServer
+ConfD <~up~> DataProvider
+net2 <-up-> ConfD
+net2 <-ri-> DataProvider
 net3 <.ri.> Netconf
 
 @enduml

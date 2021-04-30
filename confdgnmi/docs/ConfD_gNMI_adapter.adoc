@@ -613,7 +613,7 @@ Following diagram shows deployment context of the
 gNMI Adapter.
 
 ifdef::env-github[]
-image::{gitplant}/deployment.puml[]
+image::{gitplant-develop}/deployment.puml[]
 endif::[]
 ifndef::env-github[]
 plantuml::deployment.puml[format="svg", align="center"]
