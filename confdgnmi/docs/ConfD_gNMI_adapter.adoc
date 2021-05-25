@@ -220,9 +220,9 @@ The adapter can be run in _demo_ and _api_ mode.
 
 In the _demo_ mode it does not require running ConfD, it partly emulates `ietf-interfaces.yang` data model and initial configuration. This mode is useful for testing, development, etc.
 
-In case we want to run adapter against ConfD (_api_ mode), we can use `Makefile` `start` target to start ConfD with initial demo configuration.
+In case we want to run adapter against ConfD (_api_ mode), we can use `Makefile` `start` target to start ConfD with initial sample configuration.
 
-.rebuild everything and start ConfD and load demo configuration
+.rebuild everything and start ConfD and load sample configuration
 [source, shell, role="acopy"]
 ----
 make stop clean all start
@@ -261,7 +261,7 @@ Options:
   --cfg=CFG             config file
 ----
 
-We can run server in demo mode type (pass `-t demo`) or in API (`maapi`) mode against ConfD (pass `-t api`). Other modes (like `netconf` are currently not supported). For `demo` mode type, it may be necessary to pass config file (e.g. for `STREAM` subscriptions, `--cfg=data/demo.xml)
+We can run server in demo mode type (pass `-t demo`) or in API (`maapi`) mode against ConfD (pass `-t api`). Other modes (like `netconf` are currently not supported). For `demo` mode type, it may be necessary to pass config file (e.g. for `STREAM` subscriptions, `--cfg=data/demo.xml`)
 
 NOTE: Other parameters (e.g. gRPC port and host) are currently hardcoded in the source code (mainly in the `./src/confd_gnmi_common.py`).
 
@@ -510,7 +510,7 @@ State (operational) data can be stored in the ConfD CDB, or they can be provided
 to ConfD by external application (called data provider).
 In the first case (data stored in the CDB) the ConfD can monitor itself the
 changes to the values and inform the gNMI Adapter server about subscription changes.
-In the second case (data provided by data provider) the ConfD cannot
+In the second case (data is provided by the data provider) the ConfD cannot
 monitor changes. The data provider application has to provide such information.
 
 NOTE: New ConfD api provides data callback functions
